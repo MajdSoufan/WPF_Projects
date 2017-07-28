@@ -1,0 +1,115 @@
+CS 470 - Project 4
+Memory Managment
+
+(This file best viewed using a fixed-width font.)
+
+The files in this directory represent page reference strings.  Each
+file contains 10000 references of the form <pid, page#> where pid is a
+process id and page# is the VM page being referenced by process pid.
+
+The files were created using the following algorithm.  
+
+  1. Initially, randomly choose a page # to start.  Push this page # onto
+     a stack.
+  2. For subsequent page references, with some (high) probability s, the
+     next page reference will be the same page #.
+  3. If the next page reference is not the same page, then with some
+     other (high) probability o, it will be either the page # before or the
+     page after # (choose equally between the two).
+  4. Otherwise, the next page reference is with 75% probability the
+     page # on the top of the stack (modeling a function return) and
+     the stack is popped or with 25% probability a randomly picked
+     page # (modeling a function call) and this new page # is pushed
+     onto the stack.
+
+Setting different values of s and o affect the locality of the program
+that is being simulated.  Higher probabilities should create reference
+strings where more locality is exhibited.  The probabilities of 98%
+and 95% were used for s and o in all 4 combinations for each process.
+
+Files of references for 10, 50, and 100 processes were created by
+randomly choosing a file for an individual process and reading out 100
+references to a new file.  This was repeated until 10000 references
+were put into the new file.  (Due to the random nature of picking a
+process to "run", it is entirely possible that the files do not
+contain references for exactly 10, 50, and 100 processes,
+respectively, but that will be the bounds on the maximum number in
+each file.)  This was done for each of the combinations of
+probabilities.
+
+There are 16 data files (4 probability combinations for 1, 10, 50, and
+100 processes).  They are named in the following format:
+<#proc>p<s><o>.dat, where #proc is the number of processes represented
+in the file, and s and o are the probabilities explained above.  For
+example, 50p9895.dat is a file with references for 50 processes using
+s=98 and o=95.
+
+As noted in the assignment, each one of these files should be run
+through your simulator for frame sizes of 10, 50 and 100.  Each run
+should generate 3 values, the number of page faults for the FIFO, LRU,
+and OPT replacement algorithms.  The summary tables should look
+something like the following.  One block is filled in with the results
+from the instructor's sample implementation to give you a reference.
+
+10 frames:
+
+# processes | algorithm | s=98,o=98 | s=98,o=95 | s=95,o=98 | s=95,o=95
+------------+-----------+-----------+-----------+-----------+----------      
+    1       | FIFO      |           |           |           |
+            | LRU       |           |           |           |
+            | OPT       |           |           |           |
+------------+-----------+-----------+-----------+-----------+----------      
+    10      | FIFO      |      175  |           |           |
+            | LRU       |      167  |           |           |
+            | OPT       |      115  |           |           |
+------------+-----------+-----------+-----------+-----------+----------      
+    50      | FIFO      |           |           |           |
+            | LRU       |           |           |           |
+            | OPT       |           |           |           |
+------------+-----------+-----------+-----------+-----------+----------      
+    100     | FIFO      |           |           |           |
+            | LRU       |           |           |           |
+            | OPT       |           |           |           |
+------------+-----------+-----------+-----------+-----------+----------      
+
+50 frames:
+
+# processes | algorithm | s=98,o=98 | s=98,o=95 | s=95,o=98 | s=95,o=95
+------------+-----------+-----------+-----------+-----------+----------      
+    1       | FIFO      |           |           |           |
+            | LRU       |           |           |           |
+            | OPT       |           |           |           |
+------------+-----------+-----------+-----------+-----------+----------      
+    10      | FIFO      |           |           |           |
+            | LRU       |           |           |           |
+            | OPT       |           |           |           |
+------------+-----------+-----------+-----------+-----------+----------      
+    50      | FIFO      |           |           |           |
+            | LRU       |           |           |           |
+            | OPT       |           |           |           |
+------------+-----------+-----------+-----------+-----------+----------      
+    100     | FIFO      |           |           |           |
+            | LRU       |           |           |           |
+            | OPT       |           |           |           |
+------------+-----------+-----------+-----------+-----------+----------      
+
+100 frames:
+
+# processes | algorithm | s=98,o=98 | s=98,o=95 | s=95,o=98 | s=95,o=95
+------------+-----------+-----------+-----------+-----------+----------      
+    1       | FIFO      |           |           |           |
+            | LRU       |           |           |           |
+            | OPT       |           |           |           |
+------------+-----------+-----------+-----------+-----------+----------      
+    10      | FIFO      |           |           |           |
+            | LRU       |           |           |           |
+            | OPT       |           |           |           |
+------------+-----------+-----------+-----------+-----------+----------      
+    50      | FIFO      |           |           |           |
+            | LRU       |           |           |           |
+            | OPT       |           |           |           |
+------------+-----------+-----------+-----------+-----------+----------      
+    100     | FIFO      |           |           |           |
+            | LRU       |           |           |           |
+            | OPT       |           |           |           |
+------------+-----------+-----------+-----------+-----------+----------      

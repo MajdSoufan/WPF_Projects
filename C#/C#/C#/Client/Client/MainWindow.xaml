@@ -1,0 +1,23 @@
+﻿<Window x:Class="Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Closing="Window_Closing"
+        Title="Client" Height="368" Width="530">
+
+    <Grid Height="340" Width="500">
+
+        <Label x:Name="label" Content="UserID:" HorizontalAlignment="Left" Height="26" Margin="10,10,0,0" VerticalAlignment="Top" Width="53"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="26" Margin="63,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="87"/>
+        <Label x:Name="label1" Content="Guess:" HorizontalAlignment="Left" Height="26" Margin="195,10,0,0" VerticalAlignment="Top" Width="46"/>
+        <TextBox x:Name="guessBox" HorizontalAlignment="Left" Height="26" Margin="246,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="94" PreviewTextInput="guessBox_PreviewTextInput" PreviewKeyDown="guessBox_PreviewKeyDown" />
+        <Button x:Name="GuessButton" Content="Guess" HorizontalAlignment="Left" Height="35" Margin="396,10,0,0" VerticalAlignment="Top" Width="94" Click="GuessButton_Click"/>
+        <Button x:Name="CoinsButton" Content="Coins" HorizontalAlignment="Left" Height="35" Margin="399,125,0,0" VerticalAlignment="Top" Width="91" Click="CoinsButton_Click"/>
+        <Button Content="Connect" Height="23" HorizontalAlignment="Left" Margin="19,292,0,0" Name="btn_Connect" VerticalAlignment="Top" Width="75" Click="btn_Connect_Click" />
+        <ListBox Height="197" HorizontalAlignment="Left" Margin="19,81,0,0" Name="listBox1" VerticalAlignment="Top" Width="250" />
+        <Button x:Name="disconnect_button" Content="Disconnect" HorizontalAlignment="Left" VerticalAlignment="Top" Width="91" Margin="399,242,0,0" Height="24" Click="disconnect_button_Click"/>
+        <Button x:Name="StartGuessButton" Content="Start Guessing" HorizontalAlignment="Left" Height="40" Margin="399,180,0,0" VerticalAlignment="Top" Width="91" Click="StartGuessButton_Click"/>
+        <Label x:Name="label2" Content="log" HorizontalAlignment="Left" Height="28" Margin="20,53,0,0" VerticalAlignment="Top" Width="70"/>
+        <Button x:Name="clearButton" Content="Clear" HorizontalAlignment="Left" Height="23" Margin="195,292,0,0" VerticalAlignment="Top" Width="74" Click="clearButton_Click"/>
+
+    </Grid>
+</Window>
